@@ -9,17 +9,26 @@ onMounted(async () => {
 });
 
 const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
+let lerMais = ref(false)
+function descricao (){
+  lerMais.value != lerMais.value
+}
 </script>
+
 
 <template>
   <div>
     <h1>Produtos</h1>
     <div class="container">
       <div class="card" v-for="produto in produtos" :key="produto.id">
+      
         <h1 class="card--title">{{ produto.title }}</h1>
-        <p>{{ produto.description }}</p>
-        <p>{{ formatPrice(produto.price) }}</p>
         <img class="card--avatar" :src="produto.image" :alt="produto.title" />
+        <button @click="descricao">descricao</button>
+        <div v-if="lerMais" class="descricao">
+          <p>{{ produto.description }}</p>
+        </div>
+        <p>{{ formatPrice(produto.price) }}</p>
       </div>
     </div>
   </div>
