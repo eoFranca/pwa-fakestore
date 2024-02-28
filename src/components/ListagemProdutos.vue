@@ -9,9 +9,12 @@ onMounted(async () => {
 });
 
 const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
-let lerMais = ref(false)
-function descricao (){
-  lerMais.value != lerMais.value
+let lerMais = ref(false);
+let imagem = ref(true);
+function descricao (index){
+
+  produtos.value[index].lerMais = !produtos.value[index].lerMais;
+  produtos.value[index].imagem = !produtos.value[index].lerMais;
 }
 </script>
 
@@ -20,12 +23,12 @@ function descricao (){
   <div>
     <h1>Produtos</h1>
     <div class="container">
-      <div class="card" v-for="produto in produtos" :key="produto.id">
+      <div class="card" v-for="(produto,index) in produtos" :key="index">
       
         <h1 class="card--title">{{ produto.title }}</h1>
-        <img class="card--avatar" :src="produto.image" :alt="produto.title" />
-        <button @click="descricao">descricao</button>
-        <div v-if="lerMais" class="descricao">
+        <img v-if="produto.imagem" class="card--avatar" :src="produto.image" :alt="produto.title" />
+        <button @click="descricao(index) ">Descrição</button>
+        <div v-if="produto.lerMais" class="descricao">
           <p>{{ produto.description }}</p>
         </div>
         <p>{{ formatPrice(produto.price) }}</p>
@@ -57,11 +60,14 @@ function descricao (){
   overflow: hidden;
 }
 .card--avatar {
-  width: 100%;
-  height: 17rem;
+  width: 50%;
+  height: auto;
   object-fit: cover;
   margin-bottom: 0.5rem;
 }
+.card--avatar img
+  { max-height: 20px;}
+   
 .card--title {
   color: #222;
   font-weight: 700;
