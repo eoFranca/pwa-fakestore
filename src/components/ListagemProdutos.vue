@@ -1,7 +1,11 @@
 <script setup>
+import { useScreen } from '@/composables/screen';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 const produtos = ref([]);
+
+
+const { browserWidth, deviceWidth, isMobile } = useScreen();
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products');
@@ -21,7 +25,11 @@ function descricao (index){
 
 <template>
   <div>
-    <h1>Produtos</h1>
+    <h1>
+       Produtos - {{ browserWidth }} - {{ deviceWidth }} - {{
+      isMobile}} 
+      <span v-if="isMobile">É móvel</span>
+    </h1>
     <div class="container">
       <div class="card" v-for="(produto,index) in produtos" :key="index">
       
