@@ -35,7 +35,7 @@ function descricao (index){
       
         <h1 class="card--title">{{ produto.title }}</h1>
         <img v-if="produto.imagem" class="card--avatar" :src="produto.image" :alt="produto.title" />
-        <button @click="descricao(index) ">Descrição</button>
+        <button class="b-descricao" @click="descricao(index) ">Descrição</button>
         <div v-if="produto.lerMais" class="descricao">
           <p>{{ produto.description }}</p>
         </div>
@@ -43,8 +43,31 @@ function descricao (index){
       </div>
     </div>
   </div>
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
 </template>
 <style scoped>
+.footer{
+  width: 100%;
+  height: 10vh;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+
+}
+.b-descricao{
+  background-color: transparent;
+   padding: 5px;
+   border: solid 1px gray;
+   border-radius: 9%;
+   transition: all 0.5s;
+   
+}
+.b-descricao:hover{
+  background-color: #22222228;
+}
 .container {
   display: flex;
   flex-wrap: wrap;
