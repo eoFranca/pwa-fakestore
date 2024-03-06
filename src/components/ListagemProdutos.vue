@@ -1,11 +1,11 @@
 <script setup>
-import { useScreen } from '@/composables/screen';
+import { useScreen } from '@/composables/MobileMenu';
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 const produtos = ref([]);
 
 
-const { browserWidth, deviceWidth, isMobile } = useScreen();
+const { browserWidth, deviceWidth, isMobile, isDesktop } = useScreen();
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products');
@@ -43,11 +43,13 @@ function descricao (index){
       </div>
     </div>
   </div>
-  <div class="footer">
+  <div v-if="isDesktop" class="footer">
     <h2>Footer</h2>
   </div>
+
 </template>
 <style scoped>
+
 .footer{
   width: 100%;
   height: 10vh;
@@ -76,6 +78,7 @@ function descricao (index){
   align-items: center;
   margin: auto;
   padding: 1rem 0;
+  
 }
 .card {
   display: flex;
@@ -83,7 +86,7 @@ function descricao (index){
   justify-content: space-between;
   flex-direction: column;
   width: 15rem;
-  height: 25rem;
+  height: 30rem;
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 10px;

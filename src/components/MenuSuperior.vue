@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-
 import CartPlus from 'vue-material-design-icons/CartPlus.vue';
 import Account from 'vue-material-design-icons/Account.vue';
 import Menu from 'vue-material-design-icons/Menu.vue';
@@ -10,7 +9,7 @@ const menuAberto = ref(false);
 <template>
     <header>
       <div class="header--logo">
-        <img src="@/assets/pokeball.png" alt="Logo" />
+        <img src="@/assets/fish.png" alt="Logo" />
         <h1>FakeStore</h1>
       </div>
       <nav>
@@ -31,17 +30,19 @@ const menuAberto = ref(false);
   </template>
   <style scoped>
   header {
-    background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    background:  rgb(43, 148, 151);
+    box-shadow: 0 2px 10px #f3eeee, 0 2px 2px rgba(216, 212, 212, 0.836);
     padding: 0.2rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color:  #182e38;
   }
   
   .header--logo {
     display: flex;
     align-items: center;
+   
   }
   .header--logo img {
     width: 3rem;
@@ -62,6 +63,7 @@ const menuAberto = ref(false);
   }
   .menu-hamburger {
     display: none;
+  
   }
   
   @media (max-width: 768px) {
