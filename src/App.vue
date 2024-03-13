@@ -1,11 +1,17 @@
 <script setup>
-import ListagemProdutos from '@/components/ListagemProdutos.vue';
-import MenuSuperior from '@/components/MenuSuperior.vue';
-import MenuMobile from './components/MenuMobile.vue';
+  import { useMonitor } from '@/composables/monitor';
+
+  const { menu } = useMonitor();
 </script>
 
 <template>
-  <MenuSuperior />
-  <ListagemProdutos />
-  <MenuMobile/>
+  <div>
+    <component :is="menu"/>
+    <main>
+      <router-view />
+    </main>
+    <footer>
+      <p>Copyright &copy; 2024</p>
+    </footer>
+  </div>
 </template>

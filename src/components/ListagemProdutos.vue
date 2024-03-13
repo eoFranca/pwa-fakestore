@@ -43,9 +43,7 @@ function descricao (index){
       </div>
     </div>
   </div>
-  <div v-if="isDesktop" class="footer">
-    <h2>Footer</h2>
-  </div>
+  
 
 </template>
 <style scoped>
